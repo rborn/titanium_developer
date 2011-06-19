@@ -65,10 +65,9 @@
 	overflow:auto;
 	font-size:12px;
 	padding:20px;
-	min-width:460px !important;
+	/*min-width:460px !important;*/
 	-webkit-user-select:text;
 	clear:both;
-
 }
 
 #packaging #mobile_help_detail a

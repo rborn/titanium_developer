@@ -23,8 +23,8 @@ EditProject.setFormData = function(p)
 
 	// set default UI state
 	TiUI.setBackgroundColor('#1c1c1c');
-	TiDev.contentLeft.show();
-	TiDev.contentLeftHideButton.show();
+	TiDev.contentLeft.hide();
+	TiDev.contentLeftHideButton.hide();
 	TiDev.contentLeftShowButton.hide();	
 	TiUI.GreyButton({id:'project_edit_save_button'});
 	TiUI.GreyButton({id:'project_edit_delete_button'});
@@ -517,7 +517,7 @@ EditProject.eventHandler = function(event)
 // register module
 TiDev.registerModule({
 	name:'project_edit',
-	displayName: 'Edit',
+	displayName: 'Project Properties',
 	perspectives:['projects'],
 	html:'project_edit.html',
 	idx:1,

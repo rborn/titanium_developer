@@ -40,13 +40,13 @@ TiDev.attributes = {};
 // account type
 TiDev.isCommunity = null; 
 TiDev.baseAdURL = 'http://www.appcelerator.com/banner/';
-TiDev.mobileEmulatorAd = ['2.html?a=b','16.html?a=b'];
-TiDev.mobileDeviceAd = ['3.html?a=b','17.html?a=b'];
-TiDev.mobilePackageAd = ['4.html?a=b','18.html?a=b'];
-TiDev.desktopLaunchAd = ['5.html?a=b','20.html?a=b'];
-TiDev.desktopPackageAd = ['6.html?a=b','19.html?a=b'];
-TiDev.desktopLinksAd = ['7.html?a=b','21.html?a=b'];
-TiDev.newProjectAd = ['1.html?a=b','15.html?a=b'];
+//TiDev.mobileEmulatorAd = ['2.html?a=b','16.html?a=b'];
+//TiDev.mobileDeviceAd = ['3.html?a=b','17.html?a=b'];
+//TiDev.mobilePackageAd = ['4.html?a=b','18.html?a=b'];
+//TiDev.desktopLaunchAd = ['5.html?a=b','20.html?a=b'];
+//TiDev.desktopPackageAd = ['6.html?a=b','19.html?a=b'];
+//TiDev.desktopLinksAd = ['7.html?a=b','21.html?a=b'];
+//TiDev.newProjectAd = ['1.html?a=b','15.html?a=b'];
 TiDev.dashboardAd = ['23.html','25.html'];
 
 TiDev.setDashboardContent = false;
@@ -69,6 +69,7 @@ TiDev.setAdURLs = function()
 		}
 	});
 
+	/*
 	// new project content
 	$.get(TiDev.baseAdURL + TiDev.newProjectAd[index], function(d)
 	{
@@ -119,7 +120,7 @@ TiDev.setAdURLs = function()
 		var doc = parser.parseFromString(d, "text/xml");
 		TiDev.desktopLinksContent = doc.body.innerHTML;
 	});
-	
+	*/
 };
 
 //
@@ -523,6 +524,7 @@ TiDev.init = function()
 	});
 	
 	// hide by default
+	TiDev.contentLeft.hide();
 	TiDev.contentLeftShowButton.hide();
 	TiDev.contentLeftHideButton.hide();
 	
@@ -743,7 +745,7 @@ TiDev.getPermissions = function()
 	}
 	catch (e)
 	{
-		TiDev.db.execute('CREATE TABLE PERMISSIONS (permission TEXT, enabled INTEGER)');;
+		TiDev.db.execute('CREATE TABLE PERMISSIONS (permission TEXT, enabled INTEGER)');
 	}
 	return perms;
 };

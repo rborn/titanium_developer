@@ -283,8 +283,8 @@ PackageProject.setupView = function()
 
 	TiUI.setBackgroundColor('#1c1c1c');
 
-	TiDev.contentLeft.show();
-	TiDev.contentLeftHideButton.show();
+	TiDev.contentLeft.hide();
+	TiDev.contentLeftHideButton.hide();
 	TiDev.contentLeftShowButton.hide();	
 	
 	// get current project
@@ -554,7 +554,7 @@ PackageProject.setupMobileView = function()
 	PackageProject.AndroidAvdPath = Titanium.Filesystem.getFile(sdk.getPath(),'android/avd.py');
 
 	// initialize ad
-	$('#mobile_ads').html(TiDev.mobileEmulatorContent);
+	//$('#mobile_ads').html(TiDev.mobileEmulatorContent);
 
 	// show correct view
 	$('#mobile_packaging').css('display','block');
@@ -573,7 +573,7 @@ PackageProject.setupMobileView = function()
 		
 		$('#packaging .tab.emulator.active').click();
 		
-		$('#mobile_ads').html(TiDev.mobileEmulatorContent);
+		//$('#mobile_ads').html(TiDev.mobileEmulatorContent);
 		
 		$(this).addClass('active');
 		
@@ -1367,6 +1367,29 @@ PackageProject.setupMobileView = function()
 			x.launch();
 		});
 
+
+		// 
+		// Launch emulator with full compile
+		//
+		$('#iphone_launch_fc_button').click(function()
+		{
+			var f = Titanium.Filesystem.getFile(PackageProject.currentProject.dir,'build','iphone');
+			if (f.exists())
+			{
+				f.deleteDirectory(true);
+				f.createDirectory();
+			}
+			f = Titanium.Filesystem.getFile(PackageProject.currentProject.dir,'build','android');
+			if (f.exists())
+			{
+				f.deleteDirectory(true);
+				f.createDirectory();
+			}
+			$('#iphone_launch_button').trigger('click');
+		});
+		
+		
+
 		// 
 		// Launch emulator
 		//
@@ -1376,6 +1399,9 @@ PackageProject.setupMobileView = function()
 			
 			$(this).addClass('disabled');
 			$('#iphone_kill_button').removeClass('disabled');
+			$('#iphone_re-launch_button').removeClass('disabled');
+			$('#iphone_launch_fc_button').addClass('disabled');
+			
 			
 			// clear viewer
 			$('#mobile_iphone_emulator_viewer').empty();
@@ -1403,6 +1429,7 @@ PackageProject.setupMobileView = function()
 			
 			PackageProject.mobileCompile(Titanium.Filesystem.getFile(PackageProject.currentProject.dir,"Resources").nativePath(),'iphone',function()
 			{
+				
 				PackageProject.currentIPhonePID = TiDev.launchPython([Titanium.Filesystem.getFile(PackageProject.iPhoneEmulatorPath).toString(),'simulator', '"'+sdk+'"','"'+ PackageProject.currentProject.dir+ '"',PackageProject.currentProject.appid, '"' + PackageProject.currentProject.name+ '"', deviceFamily, simDevice]);
 				PackageProject.logReader(PackageProject.currentIPhonePID,'iphone','simulator');
 				PackageProject.iphoneEmulatorStartDate = new Date();
@@ -1419,9 +1446,25 @@ PackageProject.setupMobileView = function()
 			});
 			
 		});
-		
+
+
+		//
+		// Re-Launch emulator (shortcut to clicking kill then launch)
+		//
+		$('#iphone_re-launch_button').click(function()
+		{      
+			// Force launch to trigger
+			$('#iphone_launch_button').removeClass('disabled');
+			$('#iphone_launch_fc_button').removeClass('disabled');
+			$('#iphone_launch_button').trigger('click');
+		});
+
+
+
 		// create emulator buttons
 		TiUI.GreyButton({id:'iphone_launch_button'});
+		TiUI.GreyButton({id:'iphone_re-launch_button'});
+		TiUI.GreyButton({id:'iphone_launch_fc_button'});
 		TiUI.GreyButton({id:'iphone_kill_button'});
 
 		// show emulator tab and configure listeners
@@ -1442,6 +1485,7 @@ PackageProject.setupMobileView = function()
 				PackageProject.currentIPhonePID = null;
 				$(this).addClass('disabled');
 				$('#iphone_launch_button').removeClass('disabled');
+				$('#iphone_launch_fc_button').removeClass('disabled');
 				
 			}
 		});
@@ -1936,7 +1980,7 @@ PackageProject.setupMobileView = function()
 		$('#packaging .option').removeClass('active');
 		$(this).addClass('active');
 		
-		$("#mobile_ads").html(TiDev.mobileDeviceContent)
+		//$("#mobile_ads").html(TiDev.mobileDeviceContent)
 		
 		PackageProject.initializeConsoleWidth();
 	});
@@ -1960,7 +2004,7 @@ PackageProject.setupMobileView = function()
 		$('#packaging .option').removeClass('active');
 		$(this).addClass('active');
 		
-		$("#mobile_ads").html(TiDev.mobilePackageContent)
+		//$("#mobile_ads").html(TiDev.mobilePackageContent)
 		
 		PackageProject.initializeConsoleWidth();
 	});
@@ -2532,12 +2576,14 @@ PackageProject.initializeConsoleWidth = function()
 		PackageProject.currentProject.type == 'universal')
 	{
 		$(".detail").css('height',(height+94)+'px');
-		$('.debug_console').css('width',(rightWidth-320) + 'px').css('height',(height - 26) + 'px');
+		//$('.debug_console').css('width',(rightWidth-320) + 'px').css('height',(height - 26) + 'px');
+		$('.debug_console').css('height',(height - 26) + 'px');
 	}
 	else
 	{
 		$(".detail").css('height',(height+79)+'px');
-		$('.debug_console').css('width',(rightWidth-320) + 'px').css('height',(height) + 'px');
+		//$('.debug_console').css('width',(rightWidth-320) + 'px').css('height',(height) + 'px');
+		$('.debug_console').css('height',(height) + 'px');
 	}
 
 };
@@ -2882,7 +2928,7 @@ TiDev.registerModule({
 	displayName: 'Test & Package',
 	perspectives:['projects'],
 	html:'packaging.html',
-	idx:2,
+	idx:3,
 	callback:PackageProject.eventHandler
 });
 

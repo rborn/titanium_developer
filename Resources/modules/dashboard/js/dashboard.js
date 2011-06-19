@@ -16,10 +16,21 @@ Dashboard.eventHandler = function(event)
 	if (event == 'focus' || event == 'load')
 	{
 		$('#dashboard').html(TiDev.dashboardAdContent);
+		Dashboard.setupView();
 	}
 
 };
 
+
+//
+// Setup UI view
+//
+Dashboard.setupView = function()
+{
+	TiDev.contentLeft.hide();
+	TiDev.contentLeftHideButton.hide();
+	TiDev.contentLeftShowButton.hide();
+};
 
 
 // register module

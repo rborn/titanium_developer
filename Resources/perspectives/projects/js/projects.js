@@ -630,8 +630,8 @@ Projects.showAuthenticatedView = function(options)
 	
 	// set default UI state
 	TiDev.contentLeftShowButton.hide();
-	TiDev.contentLeftHideButton.show();
-	TiDev.contentLeft.show();
+	TiDev.contentLeftHideButton.hide();
+	TiDev.contentLeft.hide();
 	TiDev.subtabs.hide();
 	
 	// initialize project db stuff
@@ -643,7 +643,8 @@ Projects.showAuthenticatedView = function(options)
 	// show no project view
 	if (Projects.projectList.length == 0)
 	{
-		TiDev.contentLeft.setContent('<div class="parent">PROJECTS</div><div class="child"><div>No Projects</div></div>');
+		//TiDev.contentLeft.setContent('<div class="parent">PROJECTS</div><div class="child"><div>No Projects</div></div>');
+		$('#projects_selector').html('<option value="">No Projects</option>');
 		TiDev.subtabChange(0);
 
 	}
@@ -691,18 +692,20 @@ Projects.showAuthenticatedView = function(options)
 			}
 		}
 		// paint tree
-		var html = '<div class="parent">PROJECTS</div>';
+		var html = ''; //'<div class="parent">PROJECTS</div>';
 		for (var i=0;i<Projects.projectList.length;i++)
 		{
-			var classes = 'child ';
+			var classes = ''; //child ';
 			
 			if (Projects.selectedProjectIdx == Projects.projectList[i].id)
 			{
-				classes += 'active';
+				//classes += 'active';
+				classes = 'selected';
 			}
 
-			html += '<div class="'+classes+'" project_id="'+Projects.projectList[i].id+'">';
-			html += '<div>' + Projects.projectList[i].name + '</div></div>';
+			//html += '<div class="'+classes+'" project_id="'+Projects.projectList[i].id+'">';
+			//html += '<div>' + Projects.projectList[i].name + '</div></div>';
+			html +='<option value="'+Projects.projectList[i].id+'" '+classes+'>'+Projects.projectList[i].name+'</option>';
 		}
 		
 		// fire selected message
@@ -712,8 +715,10 @@ Projects.showAuthenticatedView = function(options)
 		}
 		
 		// set content
-		TiDev.contentLeft.setContent(html);
+		//TiDev.contentLeft.setContent(html);
+		$('#projects_selector').html(html);
 		
+		/*
 		// create click handler
 		$('.#tiui_content_left .child').click(function()
 		{
@@ -724,6 +729,13 @@ Projects.showAuthenticatedView = function(options)
 			var newProjectIndex = $(this).attr('project_id');
 			Projects.setActiveProject(newProjectIndex);
 
+			$MQ('l:tidev.projects.row_selected',{'project_id':newProjectIndex,'activeTab':TiDev.activeSubtab.name});
+		});
+		*/
+		$('#projects_selector').click(function()
+		{
+			var newProjectIndex = $(this).attr('value');
+			Projects.setActiveProject(newProjectIndex);
 			$MQ('l:tidev.projects.row_selected',{'project_id':newProjectIndex,'activeTab':TiDev.activeSubtab.name});
 		});
 		
