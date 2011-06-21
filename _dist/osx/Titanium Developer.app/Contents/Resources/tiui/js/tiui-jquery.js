@@ -557,6 +557,8 @@ TiUI.MainTab = function()
 			this.html += '<div idx="'+i+'" class="' + classes + '">'+this.tabs[i] + '</div>';
 		}
 		this.html += '</div>';
+		this.html += '<img title="Full Screen" id="fullscreen_button" class="tabFS" src="images/fullscreen.png" />';
+		
 		$('#tiui_tabbar').html(this.html);
 	
 		//
@@ -573,6 +575,11 @@ TiUI.MainTab = function()
 			}
 			this.activeIndex = $(this).attr('idx')
 		})	
+		
+		
+		$('#fullscreen_button').click(function(){
+			Titanium.UI.currentWindow.setFullscreen(!Titanium.UI.currentWindow.isFullscreen());
+		})
 	};
 	
 	return this;

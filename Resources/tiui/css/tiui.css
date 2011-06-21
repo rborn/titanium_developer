@@ -146,6 +146,7 @@ body.win32 #tiui_header, body.linux #tiui_header
 }
 #tiui_content_left
 {
+	position:relative;
 	width:20%;
 	float:left;
 	height:100%;
@@ -159,11 +160,35 @@ body.win32 #tiui_header, body.linux #tiui_header
 }
 #tiui_content_right
 {
+	position:relative;
 	width:80%;
 	float:left;
 	overflow:auto;
 	height:100%;
 }
+
+#fullscreen_button
+{
+	position:absolute;
+}
+.tiui-secondary-tabbar .tabFS
+{
+	height:21px;
+	right:0;
+	width:22px;	
+	background:url(../images/secondary_tab.png) repeat-x;
+	line-height:22px;
+	float:left;
+	border-left:1px solid #656565;
+	position:relative;
+	z-index:2;
+	cursor:pointer;
+}
+.tiui-secondary-tabbar .tabFS:hover
+{
+	background:url(../images/secondary_tab_active.png) repeat-x;	
+}
+
 /*****************************
  * FOOTER
  *****************************/

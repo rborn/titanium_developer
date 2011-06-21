@@ -269,6 +269,8 @@ TiDev.registerModule = function(options)
 						});
 					}
 
+					
+
 					// setup subtab listener
 					TiDev.subtabs.addListener(function(idx)
 					{
@@ -466,6 +468,7 @@ TiDev.goBack = function()
 {
 	TiDev.perspectiveChange(TiDev.activePerspective.idx);
 }
+
 
 //
 // Initialize UI

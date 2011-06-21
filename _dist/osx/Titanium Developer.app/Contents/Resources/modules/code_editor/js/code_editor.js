@@ -1,4 +1,6 @@
 CodeEditor = {};
+CodeEditor.buttonBar = new TiUI.BlackButtonBar();
+
 
 //
 // Setup main view
@@ -9,9 +11,42 @@ CodeEditor.setupView = function()
 	TiUI.setBackgroundColor('#161616');
 	TiDev.contentLeft.show();
 	TiDev.contentLeftHideButton.show();
-	TiDev.contentLeftShowButton.hide();		
+	TiDev.contentLeftShowButton.hide();
+	
+	
+	//
+	CodeEditor.buttonBar.configure({id:'tiui_content_submenu',tabs:['btn1','bnt2','btn3'],active:0});
+	CodeEditor.buttonBar.appendContent('<img style="position:absolute;left:15px;top:6px;cursor:pointer" title="refresh" id="feeds_refresh" src="modules/feeds/images/refresh.png"/>');
+	
+	CodeEditor.buttonBar.addListener(function(idx)
+	{
+		alert(idx);
+		
+
+	});
+	
+	
+
+	// Editor
+	var aceeditor = ace.edit("codeeditor");
+	aceeditor.renderer.setShowPrintMargin(false);
+	aceeditor.renderer.setShowGutter(true);
+	
+    aceeditor.setTheme("ace/theme/twilight");
+    
+    var JavaScriptMode = require("ace/mode/javascript").Mode;
+    aceeditor.getSession().setMode(new JavaScriptMode());
+
+
+
+	
+	
 	
 };
+
+
+
+
 
 // setup event handler
 CodeEditor.eventHandler = function(event)
@@ -26,7 +61,7 @@ CodeEditor.eventHandler = function(event)
 	}
 	else if (event == 'blur')
 	{
-		$('#tiui_content_submenu').hide();
+		CodeEditor.buttonBar.hide();
 	}
 };
 
