@@ -34,7 +34,7 @@ CodeEditor.eventHandler = function(event)
 // register module
 TiDev.registerModule({
 	name:'code_editor',
-	displayName: 'Code Editor',
+	displayName: 'Code <u>E</u>ditor',
 	perspectives:['projects'],
 	html:'code_editor.html',
 	idx:2,

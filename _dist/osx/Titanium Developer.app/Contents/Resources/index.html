@@ -10,6 +10,97 @@
 <script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript" src="js/fbconnect.js"></script>
 
+<script type="text/javascript">
+	$(document).ready(function () {
+		document.addEventListener('keydown', function (event) {
+			//event.shiftKey
+			//event.ctrlKey
+			//event.altKey
+			//event.metaKey (aka command)
+			
+			// N - new
+			if ((event.ctrlKey || event.metaKey) && event.keyCode == 78) {
+				$('#new_project_button').trigger('click');
+			}
+			// I - import
+			if ((event.ctrlKey || event.metaKey) && event.keyCode == 73) {
+				$('.import_project_button').trigger('click');
+			}
+			// L - launch
+			if ((event.ctrlKey || event.metaKey) && event.keyCode == 76) {
+				if($('#desktop_packaging').is(":visible"))
+				{
+					if($('#desktop_package_detail').is(":visible"))
+					{
+						$('#launch_app_button').trigger('click');
+					}
+				}
+				if($('#mobile_packaging').is(":visible"))
+				{
+					if($('#mobile_emulator_container').is(":visible"))
+					{
+						if($('#mobile_iphone_emulator_container').is(":visible"))
+						{
+							$('#iphone_launch_button').trigger('click');
+						}
+						if($('#mobile_android_emulator_container').is(":visible"))
+						{
+							$('#android_launch_button').trigger('click');
+						}
+					}
+				}
+			}
+			// S/K - stop or Kill
+			if ((event.ctrlKey || event.metaKey) && (event.keyCode == 83 || event.keyCode == 75)) {
+				if($('#desktop_packaging').is(":visible"))
+				{
+					if($('#desktop_package_detail').is(":visible"))
+					{
+						$('#launch_kill_button').trigger('click');
+					}
+				}
+				if($('#mobile_packaging').is(":visible"))
+				{
+					if($('#mobile_emulator_container').is(":visible"))
+					{
+						if($('#mobile_iphone_emulator_container').is(":visible"))
+						{
+							$('#iphone_kill_button').trigger('click');
+						}
+						if($('#mobile_android_emulator_container').is(":visible"))
+						{
+							$('#android_kill_button').trigger('click');
+						}
+					}
+				}
+			}
+			// D - dashboard
+			if ((event.ctrlKey || event.metaKey) && event.keyCode == 68) {
+				TiDev.subtabChange(0, true);
+			}
+			// P - project properties
+			if ((event.ctrlKey || event.metaKey) && event.keyCode == 80) {
+				TiDev.subtabChange(1, true);
+			}
+			// E - code editor
+			if ((event.ctrlKey || event.metaKey) && event.keyCode == 69) {
+				TiDev.subtabChange(2, true);
+			}
+			// T - test and package
+			if ((event.ctrlKey || event.metaKey) && event.keyCode == 84) {
+				TiDev.subtabChange(3, true);
+			}
+			
+		});
+	});
+	/*
+	var notification = Titanium.Notification.createNotification(window);
+	notification.setTitle('Plain JavaScript');
+	notification.setMessage('You pressed cmd+s');
+	notification.show();
+	*/
+</script>
+
 <!-- CSS -->
 <link rel="stylesheet" href="tiui/css/tiui.css" type="text/css" />
 <link rel="stylesheet" href="css/index.css" type="text/css" />
@@ -31,11 +122,11 @@
 		<div id="tiui_action_button_bar">
 			<div class="action_button" id="new_project_button">
 				<div><img src="images/new_project_2.png"/></div>
-				<span class="tiui-button-tab-title">New Project</span>
+				<span class="tiui-button-tab-title"><u>N</u>ew Project</span>
 			</div>
 			<div class="action_button import_project_button">
 				<div><img src="images/import_project_2.png"/></div>
-				<span class="tiui-button-tab-title">Import Project</span>
+				<span class="tiui-button-tab-title"><u>I</u>mport Project</span>
 			</div>
 		</div>
 	</div>

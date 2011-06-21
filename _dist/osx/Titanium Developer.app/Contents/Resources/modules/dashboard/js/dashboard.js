@@ -36,7 +36,7 @@ Dashboard.setupView = function()
 // register module
 TiDev.registerModule({
 	name:'dashboard',
-	displayName: 'Dashboard',
+	displayName: '<u>D</u>ashboard',
 	perspectives:['projects'],
 	html:'dashboard.html',
 	idx:0,
