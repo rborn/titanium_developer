@@ -517,7 +517,7 @@ EditProject.eventHandler = function(event)
 // register module
 TiDev.registerModule({
 	name:'project_edit',
-	displayName: 'Project Properties',
+	displayName: '<u>P</u>roject Properties',
 	perspectives:['projects'],
 	html:'project_edit.html',
 	idx:1,

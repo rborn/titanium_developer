@@ -1411,6 +1411,7 @@ PackageProject.setupMobileView = function()
 			var sdk = $('#iphone_emulator_sdk').val();
 			var type = (PackageProject.currentProject.type=='mobile') ? 'iphone' : PackageProject.currentProject.type;
 			var simDevice = $('#iphone_simulator_device').val();
+			
 			if (type == 'ipad')
 			{
 				// Coerce simDevice to ipad for ipad projects
@@ -2925,7 +2926,7 @@ Titanium.UI.currentWindow.addEventListener(function(event)
 // register module
 TiDev.registerModule({
 	name:'packaging',
-	displayName: 'Test & Package',
+	displayName: '<u>T</u>est & Package',
 	perspectives:['projects'],
 	html:'packaging.html',
 	idx:3,
