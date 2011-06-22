@@ -40,7 +40,7 @@ TiDev.registerModule({
 	perspectives:['projects'],
 	html:'dashboard.html',
 	idx:0,
-	active:true,
+	//active:true,
 	callback:Dashboard.eventHandler
 });
 

@@ -576,7 +576,7 @@ Titanium.Project =
 		// write out the TIAPP.xml
 		var tiappxml = this.XML_PROLOG;
 		var year = new Date().getFullYear();
-		tiappxml+='<!-- These values are edited/maintained by Titanium Developer -->\n';
+		tiappxml+='<!-- These values are edited/maintained by '+Titanium.App.getName()+' -->\n';
 		tiappxml+=this.makeEntry('id',id);
 		tiappxml+=this.makeEntry('name',name);
 		tiappxml+=this.makeEntry('version','1.0');

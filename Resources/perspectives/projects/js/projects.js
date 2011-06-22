@@ -474,6 +474,7 @@ Projects.showLogin = function()
 //		$('#fbconnect_login_button_container').hide();
 		$('#login_email').get(0).focus();
 	});
+	
 	// handler to show login
 	$('#login_tab').click(function()
 	{
@@ -502,7 +503,7 @@ Projects.showLogin = function()
 				});
 		});
 	});
-	
+
 	// validation for login
 	TiUI.validator('login',function(valid)
 	{
@@ -511,7 +512,7 @@ Projects.showLogin = function()
 		else
 			$('#login_button').addClass('disabled');
 	});
-	
+
 	// validation for signup
 	TiUI.validator('signup',function(valid)
 	{
@@ -529,7 +530,7 @@ Projects.showLogin = function()
 		else
 			$('#reset_password_button').addClass('disabled');
 	});
-	
+
 	Titanium.UI.currentWindow.setResizable(false);
 	Titanium.UI.currentWindow.setHeight(580);
 	
