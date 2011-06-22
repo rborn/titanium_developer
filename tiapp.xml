@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <ti:app xmlns:ti='http://ti.appcelerator.org'>
-<id>com.appcelerator.titanium.developer</id>
-<name>Titanium Developer</name>
-<version>1.3.0</version>
-<publisher>Appcelerator</publisher>
-<url>http://www.appcelerator.com</url>
+<id>com.adrianopaladini.tidevcommunity</id>
+<name>TiDev Communit</name>
+<version>1.3.02</version>
+<publisher>adriano</publisher>
+<url>http://www.apaladini.com.br</url>
 <icon>titanium.png</icon>
 <dmg_background>dmg_background.png</dmg_background>
-<copyright>2011 by Appcelerator</copyright>
+<copyright>2011 by Adriano Paladini</copyright>
     <window>
         <id>initial</id>
-        <title>Titanium Developer</title>
+        <title>TiDev Community</title>
         <url>app://index.html</url>
         <width>1100</width>
         <max-width>3000</max-width>

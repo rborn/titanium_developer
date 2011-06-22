@@ -1,15 +1,17 @@
-This is a new beginning!
-Version 1.3.02
-
-------------------------------
-
+---------------------------------
+ Appcelerator Titanium Developer
+---------------------------------
 
 
+Titanium Developer has been replaced by Titanium Studio. Although the source code remains open source, and the appcelerator will no longer be maintaining this code or releasing any new versions.
 
-Titanium Developer has been replaced by Titanium Studio. Although the source code remains open source, we will no longer be maintaining this code or releasing any new versions.
+However, I think I am making improvements necessary to continue this tool as well.
 
-Appcelerator Titanium Developer
---------------------------------
+Everyone can help in this project by sending ideas or making changes to the code.
+
+
+---------------------------------
+
 
 This is the source code for the Titanium Developer desktop application
 that is a visual environment for the Titanium SDKs.
