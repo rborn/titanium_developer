@@ -38,7 +38,11 @@
 			//event.ctrlKey
 			//event.altKey
 			//event.metaKey (aka command)
-			
+
+			// F - fullscreen
+			if ((event.ctrlKey || event.metaKey) && event.keyCode == 70) {
+				$('#fullscreen_button').trigger('click');
+			}
 			// N - new
 			if ((event.ctrlKey || event.metaKey) && event.keyCode == 78) {
 				$('#new_project_button').trigger('click');
@@ -111,7 +115,6 @@
 			if ((event.ctrlKey || event.metaKey) && event.keyCode == 84) {
 				TiDev.subtabChange(3, true);
 			}
-			
 		});
 	});
 	/*

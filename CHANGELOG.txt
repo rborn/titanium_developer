@@ -1,1 +1,30 @@
-I AM A CHANGE LOG
+1.3.02 (2011-06-22) - (Not closed Yet)
+	
+	-Providing installation packages (Dist folder)
+	-Add Keyboard shotcut for "Fullscreen" function
+	-Adding files will be needed to the list files of project
+	-Adding new window editor for tiapp.xml
+	
+
+1.3.01 (2011-06-22) - Now, from this version the updates made by the community:
+
+	-New toolbar layout
+	-Projects selector is moved to toolbar
+	-Removed "Community Perspective"
+	-Removed Ads
+	-Changes to work with Universal project type
+	-Device selector
+	-New option to launch simulator with force full compile (iOS only)
+	-New option to re-launch simulator (iOS only)
+	-First stage of code editor
+	-Re-layout "Run Emulator" window
+	-Switch positions of project name and project path in old "Edit" window
+	-Rename "Edit" window to "Project Properties"
+	-Minor corrections to work with all mobileSDK (including 1.8.0)
+	-Add support for Keyboard Shotcuts
+	-Add support to Full screen
+	-Removed a lot of files unused
+
+
+
+1.2.2 (2011-06-18) - Get last version of "discontinued" Titanium Developer from appcelerator

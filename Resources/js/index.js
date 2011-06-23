@@ -13,7 +13,7 @@ TiDev.moduleCount = 0;
 TiDev.perspectiveCount = 0;
 
 // global db var
-TiDev.db = Titanium.Database.open("TiDeveloper");
+TiDev.db = Titanium.Database.open("TiDevCommunity"); //TiDeveloper
 
 // track active perspective and subtab
 TiDev.activePerspective = {};
@@ -547,6 +547,7 @@ TiDev.init = function()
 
 	TiDev.loadResourceFiles(perspectives, 'perspectives');
 	
+	
 	// load modules
 	var modulesDir  = Titanium.Filesystem.getFile(Titanium.App.appURLToPath('app://modules'));
 	var modules = modulesDir.getDirectoryListing();
@@ -578,6 +579,7 @@ TiDev.init = function()
 			clearInterval(moduleInterval);
 		}		
 	},50);
+	
 };
 
 TiDev.needsTotalReinstall = function()
@@ -611,9 +613,9 @@ TiDev.needsTotalReinstall = function()
 
 TiDev.totalReinstall = function()
 {
-	if (confirm("Titanium needs to udpate some components " +
+	if (confirm(Titanium.App.getName()+" needs to udpate some components " +
 		"on your system. A total reinstall is required. " +
-		"Exit Titanium Developer and go to the download page?"))
+		"Exit "+Titanium.App.getName()+" and go to the download page?"))
 	{
 		Titanium.Desktop.openURL("http://www.appcelerator.com/download/");
 		Titanium.App.exit();
@@ -621,19 +623,19 @@ TiDev.totalReinstall = function()
 }
 
 //
-// Register for Titanium Developer Updates
+// Register for App Updates
 //
 Titanium.UpdateManager.onupdate = function(details)
 {
 	TiDev.messageArea.setCollapsedWidth('390px');
-	TiDev.messageArea.setDefaultMessage('New Titanium Developer available (version ' + details.version + '). <span id="sdk_download_link" style="text-decoration:underline">Click to download</span>',
+	TiDev.messageArea.setDefaultMessage('New '+Titanium.App.getName()+' available (version ' + details.version + '). <span id="sdk_download_link" style="text-decoration:underline">Click to download</span>',
 	function()
 	{
 		$('#sdk_download_link').click(function()
 		{
 			if (!TiDev.needsTotalReinstall())
 			{
-				TiDev.messageArea.setMessage('Installing new Titanium Developer...');
+				TiDev.messageArea.setMessage('Installing new '+Titanium.App.getName()+'...');
 				Titanium.UpdateManager.installAppUpdate(details, function()
 				{
 					TiDev.showDefaultSystemMessage();
@@ -839,7 +841,8 @@ $(document).ready(function()
 		$('#tiui_signal_off').css('display','inline');
 		$('#tiui_signal_on').css('display','none');
 	}
-	
+
+/*	
 	//
 	// feedback handler
 	// 
@@ -857,8 +860,9 @@ $(document).ready(function()
 		},300);
 //		Projects.loadVideoWindow();
 	});
+	*/
 	// set title
-	document.title = "Titanium Developer (" + Titanium.App.getVersion() + ")";
+	document.title = Titanium.App.getName() + " (" + Titanium.App.getVersion() + ")";
 	Titanium.API.addEventListener(Titanium.APP_EXIT, function(e) {
 		// Workaround for endless update loop
 		var appData = Titanium.Filesystem.getApplicationDataDirectory();
@@ -949,6 +953,7 @@ Titanium.Network.addConnectivityListener(function(online)
 //
 TiDev.invokeCloudService = function(name,data,type,sCallback,fCallback)
 {	
+	
 	// if offline, don't attempt
 	if (Titanium.Network.online == false)
 	{
@@ -962,6 +967,7 @@ TiDev.invokeCloudService = function(name,data,type,sCallback,fCallback)
 	}
 
 	var url = Titanium.App.getStreamURL(name);
+	
 	var type = (type)?type:'POST';
 
 	if (typeof(data)=='undefined')
